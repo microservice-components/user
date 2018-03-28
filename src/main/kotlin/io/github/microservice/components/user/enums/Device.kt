@@ -4,5 +4,5 @@ enum class Device {
     ANDROID,
     IOS,
     PC,
-    MICRO_PROGRAM
+    MICRO_PROGRAM;
 }

@@ -1,27 +1,25 @@
 package io.github.microservice.components.user.model
 
-import io.github.microservice.components.user.enums.Device
 import io.github.microservice.components.user.enums.From
+import io.github.microservice.components.user.enums.Device
 import io.swagger.annotations.ApiModelProperty
 import io.swagger.annotations.ApiParam
-import lombok.Data
-import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.NotNull
+import java.util.Date
 
 /**
- * Entity UserAccount.
+ * Entity UserAccount. 
  *
  * @author duiker(generated)
  */
-@Data
 @Table(name = "user_account")
-data class UserAccount(
+data class UserAccount (
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "id")
-        val id: Int? = null,
+        var id: Int? = null,
 
         @NotNull
         @ApiParam(required = true)
@@ -104,5 +102,5 @@ data class UserAccount(
         @ApiModelProperty(value = "更新时间")
         @Column(name = "update_time")
         var updateTime: Date? = null
-)
 
+)
