@@ -1,0 +1,9 @@
+{
+  "generator-duiker": {
+    "promptValues": {
+      "group": "io.github.microservice.components",
+      "name": "user",
+      "mysqlURL": "mysql://root:@localhost/user?charset=utf8"
+    }
+  }
+}

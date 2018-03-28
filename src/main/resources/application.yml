@@ -3,7 +3,7 @@ spring:
         baseUrl: http://zipkin/
         locator.discovery.enabled: true
     liquibase:
-        change-log: 'classpath:liquibase/master.xml'
+        change-log: 'classpath:/liquibase/master.xml'
 
 spring.sleuth.rxjava.schedulers.hook.enabled: false
 
