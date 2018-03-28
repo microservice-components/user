@@ -1,4 +1,4 @@
-package io.github.microservice.components.user.web.rest;
+package io.github.microservice.components.user.rest;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import io.github.microservice.components.user.model.UserAccount;
