@@ -43,18 +43,28 @@ repositories {
 
 
 ext {
+	springfoxVersion = '2.7.0'
 	springCloudVersion = 'Finchley.M9'
+	servletApiVersion = '4.0.0'
+	persistenceVersion = '2.2'
+    mybatisplusVersion = '2.1.4'
+    mybatisplusStarterVersion = '1.0.5'
 }
 
 dependencies {
 //	compile 'com.github.hookszhang:duiker:spring-boot-2.0-SNAPSHOT'
 	compile('com.fasterxml.jackson.module:jackson-module-kotlin')
+	compile("io.springfox:springfox-swagger2:${springfoxVersion}")
+    compile("com.baomidou:mybatisplus-spring-boot-starter:${mybatisplusStarterVersion}")
+    compile("com.baomidou:mybatis-plus:${mybatisplusVersion}")
 	compile('org.springframework.boot:spring-boot-starter-data-redis')
 	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
 	compile('org.springframework.cloud:spring-cloud-starter-openfeign')
 	compile('org.springframework.cloud:spring-cloud-starter-zipkin')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	compile("org.jetbrains.kotlin:kotlin-reflect")
+	compile("javax.servlet:javax.servlet-api:${servletApiVersion}")
+	compile("javax.persistence:javax.persistence-api:${persistenceVersion}")
 	runtime('mysql:mysql-connector-java')
 	compileOnly('org.projectlombok:lombok')
 	compile("com.alibaba:druid:1.1.5")
