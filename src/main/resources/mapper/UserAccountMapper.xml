@@ -20,4 +20,11 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
+
+  <select id="findByPhone" resultMap="BaseResultMap">
+        SELECT *
+        FROM usr_account
+        WHERE
+        phone = #{account}
+   </select>
 </mapper> 
