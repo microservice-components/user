@@ -16,7 +16,7 @@ class UserAccountService(private val jwtUtils: JWTUtils) : ServiceImpl<UserAccou
     private val log = LoggerFactory.getLogger(javaClass)
 
     fun register(loginVM: LoginVM): JwtToken {
-        var user = baseMapper.findByPhone(loginVM.phone)
+        var user = baseMapper.findByPhone(loginVM.phone!!)
 
         return if (user == null) {
             user = UserAccount(loginVM.phone, loginVM.from, loginVM.device, generatorInviteCode(), loginVM.invitedCode)
@@ -39,7 +39,6 @@ class UserAccountService(private val jwtUtils: JWTUtils) : ServiceImpl<UserAccou
     }
 
     private fun generatorInviteCode(): String? {
-        // TODO unique
-        return RandomStringUtils.random(6)
+        return RandomStringUtils.randomAlphabetic(6)
     }
 }

@@ -23,7 +23,7 @@
 
   <select id="findByPhone" resultMap="BaseResultMap">
         SELECT *
-        FROM usr_account
+        FROM user_account
         WHERE
         phone = #{account}
    </select>

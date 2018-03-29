@@ -5,10 +5,7 @@ import io.github.microservice.components.user.web.rest.vo.JwtToken
 import io.github.microservice.components.user.web.rest.vo.LoginVM
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 /**
@@ -23,7 +20,7 @@ class UserAccountPublicResource(private val userAccountService: UserAccountServi
     private val log = LoggerFactory.getLogger(javaClass)
 
     @PostMapping("/authorize")
-    fun authorize(@Valid vm: LoginVM): ResponseEntity<JwtToken> {
+    fun authorize(@Valid @RequestBody vm: LoginVM): ResponseEntity<JwtToken> {
         return ResponseEntity.ok(userAccountService.register(vm))
     }
 

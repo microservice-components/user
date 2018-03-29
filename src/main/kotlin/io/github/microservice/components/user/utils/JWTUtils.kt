@@ -17,8 +17,8 @@ class JWTUtils {
         val expirationDay = 30
         val secretKeySpec = SecretKeySpec(key.toByteArray(), signatureAlgorithm.jcaName)
         return Jwts.builder()
-                .claim("", userId)
-                .claim("", phone)
+                .claim("x-user-id", userId)
+                .claim("x-phone", phone)
                 .signWith(signatureAlgorithm, secretKeySpec)
                 .setExpiration(afterFewDays(expirationDay))
                 .compact()
