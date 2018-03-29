@@ -15,8 +15,8 @@ import javax.validation.Valid
  * Rest controller. UserAccount
  */
 @RestController
-@RequestMapping("/api")
-class UserAccountResource(private val service: UserAccountService) {
+@RequestMapping("/rpc")
+class UserAccountRpcResource(private val service: UserAccountService) {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
