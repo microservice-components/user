@@ -1,20 +1,20 @@
 package io.github.microservice.components.user.model
 
-import io.github.microservice.components.user.enums.From
 import io.github.microservice.components.user.enums.Device
+import io.github.microservice.components.user.enums.From
 import io.swagger.annotations.ApiModelProperty
 import io.swagger.annotations.ApiParam
+import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.NotNull
-import java.util.Date
 
 /**
- * Entity UserAccount. 
+ * Entity UserAccount.
  *
  * @author duiker(generated)
  */
 @Table(name = "user_account")
-data class UserAccount (
+data class UserAccount(
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,6 @@ data class UserAccount (
         @Column(name = "email")
         var email: String? = null,
 
-        @NotNull
         @ApiParam(required = true)
         @ApiModelProperty(value = "昵称")
         @Column(name = "nick_name")
@@ -41,19 +40,16 @@ data class UserAccount (
         @Column(name = "photo")
         var photo: String? = null,
 
-        @NotNull
         @ApiParam(required = true)
         @ApiModelProperty(value = "用户语言")
         @Column(name = "user_language")
         var userLanguage: String? = null,
 
-        @NotNull
         @ApiParam(required = true)
         @ApiModelProperty(value = "来源渠道")
         @Column(name = "channel")
         var channel: String? = null,
 
-        @NotNull
         @ApiParam(required = true)
         @ApiModelProperty(value = "激活时间")
         @Column(name = "activated_time")
@@ -103,4 +99,12 @@ data class UserAccount (
         @Column(name = "update_time")
         var updateTime: Date? = null
 
-)
+) {
+    constructor(phone: String?, from: From?, device: Device?, inviteCode: String?, invitedCode: String?) : this() {
+        this.phone = phone
+        this.from = from
+        this.device = device
+        this.inviteCode = inviteCode
+        this.invitedCode = invitedCode
+    }
+}
