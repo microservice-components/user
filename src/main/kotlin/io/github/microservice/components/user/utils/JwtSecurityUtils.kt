@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServletRequest
  *
  * @author hookszhang on 2018/3/30.
  */
-class JwtSecurityUtils {
-    companion object {
-        const val HEADER_USER_ID = "x-user-id"
-        const val HEADER_USER_PHONE = "x-user-phone"
-    }
+object JwtSecurityUtils {
+
+    const val HEADER_USER_ID = "x-user-id"
+    const val HEADER_USER_PHONE = "x-user-phone"
 
     /**
      * 获得当前登录的用户 ID
@@ -44,7 +43,7 @@ class JwtSecurityUtils {
     /**
      * 从请求上下文中获得当前 HttpServletRequest
      */
-    private fun getContextRequest(): HttpServletRequest {
+    fun getContextRequest(): HttpServletRequest {
         return (RequestContextHolder.getRequestAttributes() as ServletRequestAttributes).request
     }
 }

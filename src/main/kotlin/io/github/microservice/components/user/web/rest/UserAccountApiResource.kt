@@ -1,5 +1,7 @@
 package io.github.microservice.components.user.web.rest
 
+import io.github.microservice.components.user.bean.JwtSecurityUser
+import io.github.microservice.components.user.utils.JwtSecurityUtils
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 class UserAccountApiResource {
 
     @GetMapping("/account")
-    fun account() {
+    fun account(): JwtSecurityUser? {
+        return JwtSecurityUtils.getCurrentLoginUser()
     }
 }
