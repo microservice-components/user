@@ -26,6 +26,7 @@ class UserAccountPublicResource(private val userAccountService: UserAccountServi
 
     @GetMapping("/sms_captcha")
     fun sendCaptcha(phoneNumber: String): ResponseEntity<Void> {
+        userAccountService.sendSmsCaptcha(phoneNumber)
         return ResponseEntity.ok().build();
     }
 

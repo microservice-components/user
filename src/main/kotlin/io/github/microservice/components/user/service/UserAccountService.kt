@@ -1,6 +1,7 @@
 package io.github.microservice.components.user.service
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl
+import io.github.microservice.components.user.feign.MessageFeignClient
 import io.github.microservice.components.user.mapper.UserAccountMapper
 import io.github.microservice.components.user.model.UserAccount
 import io.github.microservice.components.user.utils.JWTUtils
@@ -11,7 +12,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
-class UserAccountService(private val jwtUtils: JWTUtils) : ServiceImpl<UserAccountMapper, UserAccount>() {
+class UserAccountService(private val jwtUtils: JWTUtils, private val messageFeignClient: MessageFeignClient) : ServiceImpl<UserAccountMapper, UserAccount>() {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
@@ -40,5 +41,10 @@ class UserAccountService(private val jwtUtils: JWTUtils) : ServiceImpl<UserAccou
 
     private fun generatorInviteCode(): String? {
         return RandomStringUtils.randomAlphabetic(6)
+    }
+
+    fun sendSmsCaptcha(phoneNumber: String) {
+        val captcha = RandomStringUtils.randomAlphanumeric(4)
+        messageFeignClient.sendSmsCaptcha(phoneNumber, captcha)
     }
 }
