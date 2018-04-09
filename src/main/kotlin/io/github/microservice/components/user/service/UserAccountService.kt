@@ -44,7 +44,7 @@ class UserAccountService(private val jwtUtils: JWTUtils, private val messageFeig
     }
 
     fun sendSmsCaptcha(phoneNumber: String) {
-        val captcha = RandomStringUtils.randomAlphanumeric(4)
+        val captcha = RandomStringUtils.randomNumeric(4)
         messageFeignClient.sendSmsCaptcha(phoneNumber, captcha)
     }
 }
