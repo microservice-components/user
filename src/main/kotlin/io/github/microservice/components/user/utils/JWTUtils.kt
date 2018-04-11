@@ -14,8 +14,8 @@ class JWTUtils(private val applicationProperties: ApplicationProperties) {
 
     fun createToken(userId: Int, phone: String): String {
         val signatureAlgorithm = SignatureAlgorithm.HS256
-        val key = applicationProperties.jwtSecret
-        val expirationDay = 30
+        val key = applicationProperties.jwt.secret
+        val expirationDay = applicationProperties.jwt.expirationDay
         val secretKeySpec = SecretKeySpec(key.toByteArray(), signatureAlgorithm.jcaName)
         return Jwts.builder()
                 .claim("x-user-id", userId)
