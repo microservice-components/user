@@ -1,5 +1,6 @@
 package io.github.microservice.components.user.utils
 
+import io.github.microservice.components.user.config.ApplicationProperties
 import io.jsonwebtoken.*
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
@@ -7,13 +8,13 @@ import java.util.*
 import javax.crypto.spec.SecretKeySpec
 
 @Component
-class JWTUtils {
+class JWTUtils(private val applicationProperties: ApplicationProperties) {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
     fun createToken(userId: Int, phone: String): String {
         val signatureAlgorithm = SignatureAlgorithm.HS256
-        val key = "123"
+        val key = applicationProperties.jwtSecret
         val expirationDay = 30
         val secretKeySpec = SecretKeySpec(key.toByteArray(), signatureAlgorithm.jcaName)
         return Jwts.builder()
